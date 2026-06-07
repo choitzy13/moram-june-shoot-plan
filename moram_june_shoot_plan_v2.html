@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모람헤어 6월 촬영 구성안 v2 — ARTren</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0d0d0b;--bg2:#131310;--bg3:#1a1a16;--border:#2a2a24;--border-light:#333328;
+    --gold:#c8a96e;--gold-dim:#8a7048;--gold-pale:#e8d5a8;--cream:#f0ead8;
+    --text:#d4cfc0;--text-dim:#7a7568;--text-muted:#4a4840;--white:#f5f0e8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:14px;-webkit-font-smoothing:antialiased;}
+
+  /* HEADER */
+  .header{position:relative;padding:80px 60px 60px;border-bottom:1px solid var(--border);overflow:hidden;}
+  .header::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(200,169,110,0.06) 0%,transparent 70%);pointer-events:none;}
+  .header-meta{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:40px;}
+  .brand-tag{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;border:1px solid var(--gold-dim);padding:4px 12px;border-radius:2px;}
+  .doc-info{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);text-align:right;line-height:1.8;letter-spacing:0.05em;}
+  .header-title{font-family:'Noto Serif KR',serif;font-size:48px;font-weight:300;color:var(--white);line-height:1.2;letter-spacing:-0.02em;margin-bottom:8px;}
+  .header-title span{color:var(--gold);font-weight:600;}
+  .header-sub{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:40px;}
+  .header-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);max-width:600px;}
+  .stat-box{background:var(--bg2);padding:16px 20px;}
+  .stat-num{font-family:'DM Mono',monospace;font-size:24px;color:var(--gold);font-weight:400;line-height:1;margin-bottom:4px;}
+  .stat-label{font-size:10px;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;}
+
+  /* NOTICE */
+  .notice-bar{background:rgba(139,58,58,0.08);border:1px solid rgba(139,58,58,0.3);border-left:3px solid #8b3a3a;padding:14px 60px;font-size:12px;color:#c89090;font-family:'DM Mono',monospace;letter-spacing:0.05em;display:flex;align-items:center;gap:12px;}
+  .notice-label{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#8b3a3a;border:1px solid #8b3a3a;padding:2px 6px;border-radius:2px;white-space:nowrap;}
+
+  /* LAYOUT */
+  .container{max-width:1400px;margin:0 auto;padding:0 60px 80px;}
+  .section{margin-top:60px;}
+  .section-header{display:flex;align-items:baseline;gap:16px;margin-bottom:28px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+  .section-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold-dim);letter-spacing:0.15em;}
+  .section-title{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:400;color:var(--white);letter-spacing:-0.01em;}
+
+  /* CONCEPT */
+  .concept-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);}
+  .concept-item{background:var(--bg2);padding:24px;}
+  .concept-item::before{content:attr(data-icon);font-size:24px;display:block;margin-bottom:12px;}
+  .concept-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-dim);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;}
+  .concept-value{font-size:14px;color:var(--cream);line-height:1.5;font-weight:300;}
+
+  /* LINEUP */
+  .lineup-grid{display:grid;gap:2px;}
+  .lineup-card{background:var(--bg2);border:1px solid var(--border);display:grid;grid-template-columns:60px 1fr 110px 90px 190px 190px;align-items:stretch;transition:border-color 0.2s;}
+  .lineup-card:hover{border-color:var(--gold-dim);}
+  .lineup-card.hr{background:var(--bg3);border-color:var(--border-light);}
+  .lineup-card.hr .cell{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;}
+  .cell{padding:16px 18px;border-right:1px solid var(--border);display:flex;align-items:center;font-size:13px;}
+  .cell:last-child{border-right:none;}
+  .cell-rank{font-family:'DM Mono',monospace;font-size:18px;color:var(--gold);font-weight:500;justify-content:center;}
+  .cell-title{flex-direction:column;align-items:flex-start;gap:4px;}
+  .video-title{font-family:'Noto Serif KR',serif;font-size:14px;color:var(--white);font-weight:400;}
+  .video-sub{font-size:10px;color:var(--text-dim);font-family:'DM Mono',monospace;letter-spacing:0.05em;}
+  .badge{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:2px 7px;border-radius:2px;border:1px solid;}
+  .bc{color:#c88c5a;border-color:#6b4a2a;background:rgba(200,140,90,0.08);}
+  .bs{color:#5a9c7a;border-color:#2a5c4a;background:rgba(90,156,122,0.08);}
+  .ba{color:#7a8cc0;border-color:#3a4a7a;background:rgba(122,140,192,0.08);}
+  .tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+  .tag{font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;letter-spacing:0.08em;border:1px solid;}
+  .tk{color:var(--gold);border-color:var(--gold-dim);background:rgba(200,169,110,0.06);}
+  .ti{color:var(--text-dim);border-color:var(--border-light);}
+  .hook-tag{font-size:11px;color:var(--text-dim);line-height:1.4;}
+  .hook-tag strong{display:block;color:var(--gold-pale);font-size:10px;font-family:'DM Mono',monospace;font-weight:400;letter-spacing:0.05em;margin-bottom:2px;}
+  .cta-type{font-size:11px;color:var(--text-dim);}
+  .cta-type strong{display:block;font-size:10px;font-family:'DM Mono',monospace;color:var(--text-dim);letter-spacing:0.05em;margin-bottom:2px;}
+  .dp{font-family:'DM Mono',monospace;font-size:13px;color:var(--cream);}
+
+  /* CUE SHEETS */
+  .cue-sections{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .cue-card{background:var(--bg2);border:1px solid var(--border);overflow:hidden;}
+  .cue-card-header{background:var(--bg3);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);}
+  .cue-num{font-family:'DM Mono',monospace;font-size:24px;color:var(--gold);font-weight:400;line-height:1;}
+  .cue-title{font-family:'Noto Serif KR',serif;font-size:15px;color:var(--white);font-weight:400;margin-bottom:4px;}
+  .cue-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .cue-dur{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);}
+  .cb{font-family:'DM Mono',monospace;font-size:9px;padding:2px 6px;border-radius:2px;border:1px solid var(--border-light);color:var(--text-muted);letter-spacing:0.08em;}
+  .cb-m{color:var(--gold-dim);border-color:var(--gold-dim);}
+  .cue-table{width:100%;border-collapse:collapse;}
+  .cue-table th{font-family:'DM Mono',monospace;font-size:8px;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;padding:8px 14px;text-align:left;border-bottom:1px solid var(--border);background:var(--bg3);}
+  .cue-table td{padding:10px 14px;font-size:11px;color:var(--text);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+  .cue-table tr:last-child td{border-bottom:none;}
+  .cue-table td:first-child{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-dim);white-space:nowrap;width:50px;}
+  .ost{color:var(--cream);font-style:italic;font-size:10px;}
+  .sn{font-size:9px;color:var(--text-muted);margin-top:3px;font-family:'DM Mono',monospace;}
+  .checklist{padding:14px 20px;background:var(--bg);border-top:1px solid var(--border);}
+  .cl-title{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;}
+  .ci{display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:11px;color:var(--text);line-height:1.4;}
+  .ci::before{content:'□';color:var(--gold-dim);font-family:'DM Mono',monospace;flex-shrink:0;font-size:12px;line-height:1.2;}
+  .ci.star::before{content:'★';color:var(--gold);}
+
+  /* SCHEDULE */
+  .schedule-items{display:grid;gap:2px;}
+  .sr{display:grid;grid-template-columns:150px 60px 1fr;background:var(--bg2);border:1px solid var(--border);align-items:stretch;}
+  .st{padding:14px 16px;font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);border-right:1px solid var(--border);display:flex;align-items:center;}
+  .sd{padding:14px 12px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;white-space:nowrap;}
+  .sc{padding:14px 18px;}
+  .sb{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;}
+  .sdesc{font-size:13px;color:var(--cream);}
+  .svids{margin-top:4px;display:flex;gap:6px;flex-wrap:wrap;}
+  .vp{font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);border:1px solid var(--gold-dim);padding:1px 7px;border-radius:10px;letter-spacing:0.05em;}
+  .snote{font-size:10px;color:var(--text-dim);margin-top:4px;}
+  .sr.br{background:var(--bg);border-color:var(--border);}
+  .sr.br .sdesc{color:var(--text-muted);font-size:12px;}
+  .sr.wr{background:rgba(139,58,58,0.05);border-color:rgba(139,58,58,0.25);}
+  .sr.wr .st{color:#c08080;}
+  .sched-warn{background:rgba(200,169,110,0.04);border:1px solid rgba(200,169,110,0.2);border-left:2px solid var(--gold-dim);padding:14px 18px;margin-top:12px;font-size:12px;color:var(--text-dim);line-height:1.7;}
+  .sched-warn strong{color:var(--gold-pale);font-weight:500;}
+
+  /* B-ROLL */
+  .broll-map{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+  .bi{background:var(--bg2);padding:20px;}
+  .bf{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:0.05em;margin-bottom:6px;}
+  .ba2{font-size:16px;color:var(--text-muted);margin-bottom:6px;display:block;}
+  .bt{font-size:12px;color:var(--cream);margin-bottom:8px;line-height:1.4;}
+  .bsave{font-family:'DM Mono',monospace;font-size:9px;color:#5a9c7a;letter-spacing:0.05em;padding:2px 6px;background:rgba(90,156,122,0.08);border:1px solid rgba(90,156,122,0.2);border-radius:2px;display:inline-block;}
+
+  /* EQUIPMENT */
+  .equip-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .equip-section{background:var(--bg2);border:1px solid var(--border);overflow:hidden;}
+  .equip-header{background:var(--bg3);padding:14px 20px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:0.15em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;}
+  .equip-who{font-size:9px;color:var(--text-muted);}
+  .equip-list{padding:16px 20px;}
+  .equip-item{display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;}
+  .equip-item:last-child{border-bottom:none;}
+  .en{color:var(--cream);}
+  .er{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);text-align:right;letter-spacing:0.05em;max-width:140px;line-height:1.4;}
+
+  /* PRE-CHECKS */
+  .precheck-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+  .pi{background:var(--bg2);padding:20px;}
+  .pn{font-family:'DM Mono',monospace;font-size:28px;color:var(--gold);line-height:1;margin-bottom:10px;}
+  .pt{font-size:12px;color:var(--cream);margin-bottom:6px;line-height:1.4;font-weight:500;}
+  .pimp{font-size:10px;color:var(--text-dim);line-height:1.4;}
+  .pcrit{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;margin-top:8px;padding:2px 6px;border-radius:2px;display:inline-block;opacity:0.85;}
+  .ch{color:#8b3a3a;border:1px solid #8b3a3a;}
+  .cm{color:#c8905a;border:1px solid #6b4a2a;}
+  .co{color:var(--text-muted);border:1px solid var(--border-light);}
+
+  /* TABLES */
+  .delivery-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .dt{background:var(--bg2);border:1px solid var(--border);}
+  .dt table{width:100%;border-collapse:collapse;}
+  .dt th{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);background:var(--bg3);}
+  .dt td{padding:10px 16px;font-size:12px;color:var(--text);border-bottom:1px solid var(--border);}
+  .dt tr:last-child td{border-bottom:none;}
+  .dt td:first-child{color:var(--text-dim);font-size:11px;white-space:nowrap;}
+  .dt td:last-child{color:var(--cream);}
+  .opt{font-family:'DM Mono',monospace;font-size:8px;color:#c8905a;border:1px solid #6b4a2a;padding:1px 5px;border-radius:2px;letter-spacing:0.08em;margin-left:6px;}
+
+  /* COPY TABLE */
+  .copy-table{width:100%;border-collapse:collapse;}
+  .copy-table th{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);background:var(--bg3);}
+  .copy-table td{padding:12px 16px;font-size:12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+  .copy-table tr:last-child td{border-bottom:none;}
+  .old{color:#8a6060;text-decoration:line-through;font-style:italic;}
+  .new{color:var(--cream);}
+  .reason{color:var(--text-muted);font-size:10px;font-family:'DM Mono',monospace;}
+
+  /* COLOR GRADE */
+  .grade-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;}
+  .gc{background:var(--bg2);border:1px solid var(--border);padding:16px;}
+  .gsw{height:40px;border-radius:2px;margin-bottom:10px;}
+  .gv{font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-dim);letter-spacing:0.1em;margin-bottom:4px;}
+  .gn{font-size:12px;color:var(--cream);margin-bottom:6px;font-weight:500;}
+  .gd{font-size:10px;color:var(--text-dim);line-height:1.5;}
+
+  /* NOTE */
+  .note-block{background:rgba(200,169,110,0.04);border-left:2px solid var(--gold-dim);padding:14px 18px;margin-top:12px;font-size:12px;color:var(--text-dim);line-height:1.6;}
+  .note-block strong{color:var(--gold-pale);font-weight:500;}
+
+  /* FOOTER */
+  .footer{border-top:1px solid var(--border);padding:30px 60px;display:flex;justify-content:space-between;align-items:center;margin-top:60px;}
+  .footer-brand{font-family:'Noto Serif KR',serif;font-size:13px;color:var(--gold);font-weight:300;letter-spacing:0.05em;}
+  .footer-info{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);text-align:right;line-height:1.8;}
+
+  @media(max-width:1100px){
+    .header,.footer{padding:40px 30px;}
+    .container{padding:0 30px 60px;}
+    .notice-bar{padding:14px 30px;}
+    .cue-sections,.delivery-grid,.equip-grid{grid-template-columns:1fr;}
+    .precheck-grid{grid-template-columns:repeat(3,1fr);}
+    .broll-map{grid-template-columns:repeat(2,1fr);}
+    .grade-grid{grid-template-columns:repeat(3,1fr);}
+    .concept-grid{grid-template-columns:1fr 1fr;}
+    .lineup-card{grid-template-columns:50px 1fr 90px 70px;}
+    .lineup-card .cell:nth-child(5),.lineup-card .cell:nth-child(6){display:none;}
+  }
+  @media print{
+    :root{--bg:#fff;--bg2:#f8f8f4;--bg3:#f0ede4;--border:#ddd8c8;--text:#333;--cream:#111;--white:#000;--gold:#7a5a20;--gold-dim:#9a7a40;--text-dim:#666;--text-muted:#999;}
+    .notice-bar{display:none;}
+    .header{padding:30px 40px 24px;}
+    .container{padding:0 40px 40px;}
+    .footer{padding:20px 40px;}
+    .cue-sections,.delivery-grid,.equip-grid{grid-template-columns:1fr;}
+    .grade-grid{grid-template-columns:repeat(3,1fr);}
+    .broll-map{grid-template-columns:repeat(2,1fr);}
+    .precheck-grid{grid-template-columns:repeat(3,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-meta">
+    <div class="brand-tag">ARTren Creative Studio</div>
+    <div class="doc-info">모람헤어 웰니스 / 충북 청주시 신봉동<br>인스타그램 릴스 5편<br>2026.06 촬영 구성안 v2</div>
+  </div>
+  <div class="header-title">모람헤어<br><span>6월 촬영 구성안</span></div>
+  <div class="header-sub">MORAM HAIR WELLNESS — JUNE REEL PRODUCTION BRIEF</div>
+  <div class="header-stats">
+    <div class="stat-box"><div class="stat-num">5</div><div class="stat-label">릴스 편수</div></div>
+    <div class="stat-box"><div class="stat-num">3h+</div><div class="stat-label">촬영 세션</div></div>
+    <div class="stat-box"><div class="stat-num">18</div><div class="stat-label">신규 컷</div></div>
+    <div class="stat-box"><div class="stat-num">4×</div><div class="stat-label">B-roll 재활용</div></div>
+  </div>
+</div>
+
+<div class="notice-bar">
+  <span class="notice-label">현장 조정</span>
+  실제 염색 시술 소요 시간에 따라 촬영 순서는 현장에서 조정될 수 있습니다. 비포·과정·애프터 매칭 컷 확보를 우선 기준으로 진행합니다.
+</div>
+
+<div class="container">
+
+  <!-- 01 CONCEPT -->
+  <div class="section">
+    <div class="section-header"><span class="section-num">01</span><span class="section-title">핵심 컨셉 & 방향</span></div>
+    <div class="concept-grid">
+      <div class="concept-item" data-icon="◎"><div class="concept-label">Core Concept</div><div class="concept-value">시각적 디톡스와 본질적인 쉼을 전달하는<br>하이엔드 웰니스 큐레이션</div></div>
+      <div class="concept-item" data-icon="◈"><div class="concept-label">Tone & Manner</div><div class="concept-value">세일즈 언어 배제<br>차분한 제안형 / 침묵의 케어<br>ASMR 감각 중심</div></div>
+      <div class="concept-item" data-icon="◇"><div class="concept-label">Target</div><div class="concept-value">청주 3040 어반 프로페셔널<br>워킹맘<br>하이엔드 웰니스 관심층</div></div>
+      <div class="concept-item" data-icon="△"><div class="concept-label">Algorithm Goal</div><div class="concept-value">저장률 극대화<br>재시청률 유도<br>DM 전환</div></div>
+      <div class="concept-item" data-icon="□"><div class="concept-label">Production Logic</div><div class="concept-value">5편 B-roll 공유 구조<br>신규 컷 18~20개 → 28~30컷 완성</div></div>
+      <div class="concept-item" data-icon="○"><div class="concept-label">Color Grade</div><div class="concept-value">웜 세피아 베이스<br>하이라이트 쿨 언더톤<br>스킨톤 보정 우선</div></div>
+    </div>
+  </div>
+
+  <!-- 02 LINEUP -->
+  <div class="section">
+    <div class="section-header"><span class="section-num">02</span><span class="section-title">영상 라인업 TOP 5</span></div>
+    <div class="lineup-grid">
+      <div class="lineup-card hr">
+        <div class="cell cell-rank">#</div>
+        <div class="cell cell-title"><span>영상 제목</span></div>
+        <div class="cell">시술</div>
+        <div class="cell">길이</div>
+        <div class="cell">훅 유형</div>
+        <div class="cell">CTA</div>
+      </div>
+      <div class="lineup-card">
+        <div class="cell cell-rank">1</div>
+        <div class="cell cell-title">
+          <div class="video-title">새치에서 완성까지, 30초의 변화</div>
+          <div class="video-sub">비포·애프터 — 저장률 최상위</div>
+          <div class="tag-row"><span class="tag tk">ANCHOR</span><span class="tag tk">B-ROLL SOURCE</span></div>
+        </div>
+        <div class="cell"><span class="badge bc">염색</span></div>
+        <div class="cell"><span class="dp">30s</span></div>
+        <div class="cell"><div class="hook-tag"><strong>감정 공감형</strong>피곤해 보이는 인상,<br>가르마에서 시작될 수 있습니다</div></div>
+        <div class="cell"><div class="cta-type"><strong>SAVE CTA</strong>다음 염색 전 저장</div></div>
+      </div>
+      <div class="lineup-card">
+        <div class="cell cell-rank">2</div>
+        <div class="cell cell-title">
+          <div class="video-title">컬러가 완성되기 전, 가장 조용한 순간</div>
+          <div class="video-sub">탑다운 믹싱 ASMR — 재시청률 최상</div>
+          <div class="tag-row"><span class="tag tk">ALGORITHM ★</span><span class="tag ti">#1 B-ROLL 제공</span></div>
+        </div>
+        <div class="cell"><span class="badge bc">염색</span>&nbsp;<span class="badge ba">ASMR</span></div>
+        <div class="cell"><span class="dp">18s</span></div>
+        <div class="cell"><div class="hook-tag"><strong>감각 자극형</strong>사운드 선행 / 무자막 오프닝<br>튜브 압착음 RAW</div></div>
+        <div class="cell"><div class="cta-type"><strong>BRAND CTA</strong>모람의 컬러 — 브랜드 각인</div></div>
+      </div>
+      <div class="lineup-card">
+        <div class="cell cell-rank">3</div>
+        <div class="cell cell-title">
+          <div class="video-title">두피가 비워지는 시간</div>
+          <div class="video-sub">거품 스케일링 ASMR — 시각 임팩트 1위</div>
+          <div class="tag-row"><span class="tag tk">VISUAL IMPACT</span><span class="tag ti">#4 B-ROLL 제공</span></div>
+        </div>
+        <div class="cell"><span class="badge bs">헤드스파</span>&nbsp;<span class="badge ba">ASMR</span></div>
+        <div class="cell"><span class="dp">25s</span></div>
+        <div class="cell"><div class="hook-tag"><strong>궁금증 유발형</strong>두피가 비워지는 장면<br>거품 낙하 매크로 첫컷</div></div>
+        <div class="cell"><div class="cta-type"><strong>SAVE CTA</strong>두피 무거운 날 저장</div></div>
+      </div>
+      <div class="lineup-card">
+        <div class="cell cell-rank">4</div>
+        <div class="cell cell-title">
+          <div class="video-title">말보다 손의 압으로</div>
+          <div class="video-sub">두피 압점 마사지 ASMR — 프리미엄 차별화</div>
+          <div class="tag-row"><span class="tag tk">PREMIUM SIGNAL</span><span class="tag ti">#3 B-ROLL 활용</span></div>
+        </div>
+        <div class="cell"><span class="badge bs">헤드스파</span>&nbsp;<span class="badge ba">ASMR</span></div>
+        <div class="cell"><span class="dp">25s</span></div>
+        <div class="cell"><div class="hook-tag"><strong>감정 공감형</strong>하루의 긴장이 모이는 곳<br>손 클로즈업 직타</div></div>
+        <div class="cell"><div class="cta-type"><strong>DM CTA</strong>조용한 휴식이 필요하다면<br>DM으로 문의 주세요</div></div>
+      </div>
+      <div class="lineup-card">
+        <div class="cell cell-rank">5</div>
+        <div class="cell cell-title">
+          <div class="video-title">색보다 먼저 보이는 것</div>
+          <div class="video-sub">드라이 윤기 마무리 — 역광 슬로우 비주얼</div>
+          <div class="tag-row"><span class="tag tk">RESULT PROOF</span><span class="tag ti">#1 애프터 재활용</span></div>
+        </div>
+        <div class="cell"><span class="badge bc">염색</span></div>
+        <div class="cell"><span class="dp">22s</span></div>
+        <div class="cell"><div class="hook-tag"><strong>퀴즈형 역발상</strong>"색보다 먼저 보이는 건?"<br>→ "윤기입니다"</div></div>
+        <div class="cell"><div class="cta-type"><strong>SAVE CTA</strong>염색 전 비교용으로 저장</div></div>
+      </div>
+    </div>
+    <div class="note-block"><strong>이월 항목 (후속 촬영)</strong> — 탄산수 헤드스파, 우드 괄사 마사지: 시술 장비 보유 여부 클라이언트 확인 후 편입. 버퍼 시간(02:20~) 활용 가능.</div>
+  </div>
+
+  <!-- 03 CUE SHEETS -->
+  <div class="section">
+    <div class="section-header"><span class="section-num">03</span><span class="section-title">영상별 큐시트 + 촬영 체크리스트</span></div>
+    <div class="cue-sections">
+
+      <div class="cue-card">
+        <div class="cue-card-header">
+          <div class="cue-num">#1</div>
+          <div><div class="cue-title">새치 → 완성 30초</div><div class="cue-meta"><span class="cue-dur">30s / 비포·애프터</span><span class="cb cb-m">메인 카메라</span><span class="cb">서브 와이드</span></div></div>
+        </div>
+        <table class="cue-table">
+          <tr><th>TIME</th><th>SHOT</th><th>AUDIO</th><th>ON-SCREEN</th></tr>
+          <tr><td>0~3s</td><td>가르마 새치 역광 클로즈업 슬로우<div class="sn">85mm / 120fps / 창문 역광</div></td><td>무음 → 저음 패드 페이드인</td><td class="ost">피곤해 보이는 인상,<br>가르마에서 시작될 수 있습니다.</td></tr>
+          <tr><td>3~8s</td><td>손으로 머리 넘기며 새치 확인<div class="sn">120fps 슬로우 / 손 클로즈업</div></td><td>머리카락 스침 ASMR</td><td class="ost">가르마의 새치가<br>인상을 먼저 말할 때.</td></tr>
+          <tr><td>8~15s</td><td>믹싱·도포 압축 (#2 B-roll 활용)<div class="sn">편집 재조합</div></td><td>크림 사각거림 + 붓터치</td><td class="ost">(무자막)</td></tr>
+          <tr><td>15~22s</td><td>드라이 후 완성 모발 결 (#5 B-roll)<div class="sn">편집 재조합</div></td><td>BGM 페이드인</td><td class="ost">뿌리부터 조용히<br>정돈되는 시간.</td></tr>
+          <tr><td>22~27s</td><td>동일 가르마 위치 애프터 클로즈업<div class="sn">삼각대 마킹 위치 그대로</div></td><td>잔잔한 메인테마</td><td class="ost">좋은 염색은<br>색보다 결이 먼저 보입니다.</td></tr>
+          <tr><td>27~30s</td><td>루프컷 + CTA</td><td>페이드아웃</td><td class="ost">조용히 저장해 두셨다가,<br>다음 염색 전 확인해 보세요 🤍</td></tr>
+        </table>
+        <div class="checklist">
+          <div class="cl-title">촬영 체크리스트</div>
+          <div class="ci">비포컷 — 자연광 창문 옆 / 역광 각도 / 매크로 / 삼각대 위치 마킹</div>
+          <div class="ci">손동작 — 머리 넘김 슬로우 120fps</div>
+          <div class="ci">애프터컷 — 비포와 100% 동일 앵글·조명 (삼각대 마킹 그대로)</div>
+          <div class="ci star">비포·애프터 매칭 컷 최소 3가지 각도 확보 필수</div>
+          <div class="ci star">이 컷 = #2, #5 B-roll 수신처 → 편집 시 순서 주의</div>
+        </div>
+      </div>
+
+      <div class="cue-card">
+        <div class="cue-card-header">
+          <div class="cue-num">#2</div>
+          <div><div class="cue-title">컬러 믹싱 ASMR</div><div class="cue-meta"><span class="cue-dur">18s / 탑다운</span><span class="cb cb-m">메인 카메라 탑다운</span><span class="cb">매크로</span></div></div>
+        </div>
+        <table class="cue-table">
+          <tr><th>TIME</th><th>SHOT</th><th>AUDIO</th><th>ON-SCREEN</th></tr>
+          <tr><td>0~3s</td><td>염색 튜브 끝 여는 손 탑다운<div class="sn">링라이트 정면 / 크림 광택 극대화</div></td><td>튜브 압착음 RAW</td><td class="ost">(무자막)</td></tr>
+          <tr><td>3~8s</td><td>볼에 크림 떨어지는 매크로 슬로우<div class="sn">120fps / 마이크 15cm 근접</div></td><td>크림 낙하·착지음 ASMR</td><td class="ost">컬러가 완성되기 전,<br>가장 조용한 순간.</td></tr>
+          <tr><td>8~15s</td><td>브러시 원형 믹싱, 광택 텍스처<div class="sn">흰 대리석 배경 / 사각거림</div></td><td>사각거림 + 긁힘음 레이어</td><td class="ost">눈에 띄는 변화보다,<br>얼굴빛에 맞는 정돈.</td></tr>
+          <tr><td>15~18s</td><td>브러시 들어올렸을 때 늘어지는 크림<div class="sn">침묵 1초 — 편집 포인트</div></td><td>침묵 1초</td><td class="ost">모람의 컬러.</td></tr>
+        </table>
+        <div class="checklist">
+          <div class="cl-title">촬영 체크리스트</div>
+          <div class="ci">탑다운 삼각대 세팅 — 흰 대리석 or 블랙 트레이 배경</div>
+          <div class="ci">링라이트 정면 (크림 광택 극대화)</div>
+          <div class="ci">망원 or 매크로 렌즈 / 마이크 볼에서 15cm 근접</div>
+          <div class="ci">슬로우모션 120fps 필수</div>
+          <div class="ci star">이 컷 → #1 과정 하이라이트 B-roll로 재활용</div>
+        </div>
+      </div>
+
+      <div class="cue-card">
+        <div class="cue-card-header">
+          <div class="cue-num">#3</div>
+          <div><div class="cue-title">두피가 비워지는 시간</div><div class="cue-meta"><span class="cue-dur">25s / 거품 스케일링</span><span class="cb cb-m">메인 카메라</span><span class="cb">서브 탑샷</span></div></div>
+        </div>
+        <table class="cue-table">
+          <tr><th>TIME</th><th>SHOT</th><th>AUDIO</th><th>ON-SCREEN</th></tr>
+          <tr><td>0~3s</td><td>거품이 두피 위에 올라가는 매크로<div class="sn">클로즈업 / 마이크 근접</div></td><td>거품 소리 RAW</td><td class="ost">두피가 비워지는 장면.</td></tr>
+          <tr><td>3~10s</td><td>손끝 원형 마사지 슬로우<div class="sn">반지·시계 제거 확인 필수</div></td><td>거품 + 두피 마찰음</td><td class="ost">머리를 감는 게 아니라,<br>두피를 비워내는 과정.</td></tr>
+          <tr><td>10~18s</td><td>정수리 압점 마사지 탑샷<div class="sn">서브 카메라 탑다운 / 양손 리듬 중요</div></td><td>양손 리듬감 있게</td><td class="ost">소리 없이 쌓인 피로를<br>풀어내는 시간.</td></tr>
+          <tr><td>18~25s</td><td>거품이 모발 사이 고르게 퍼진 장면</td><td>잔잔한 마무리음</td><td class="ost">두피가 무거운 날을 위해<br>저장해 두세요 🤍</td></tr>
+        </table>
+        <div class="checklist">
+          <div class="cl-title">촬영 체크리스트</div>
+          <div class="ci">거품량 충분히 확보 (2회 분량 미리 준비)</div>
+          <div class="ci">탑다운 + 사이드 클로즈업 2앵글</div>
+          <div class="ci">손가락 끝 포커스 — 반지·시계 반드시 제거</div>
+          <div class="ci">사운드: 두피 5cm 마이크 근접</div>
+          <div class="ci star">이 컷 → #4 마사지 중간 인서트 B-roll로 재활용</div>
+        </div>
+      </div>
+
+      <div class="cue-card">
+        <div class="cue-card-header">
+          <div class="cue-num">#4</div>
+          <div><div class="cue-title">말보다 손의 압으로</div><div class="cue-meta"><span class="cue-dur">25s / 압점 마사지</span><span class="cb cb-m">메인 카메라 85mm</span><span class="cb">서브 45° 사이드</span></div></div>
+        </div>
+        <table class="cue-table">
+          <tr><th>TIME</th><th>SHOT</th><th>AUDIO</th><th>ON-SCREEN</th></tr>
+          <tr><td>0~4s</td><td>관자놀이 지그시 누르는 손 클로즈업<div class="sn">낮은 호흡 분위기 중요</div></td><td>손 압력음 + 낮은 호흡</td><td class="ost">하루의 긴장이<br>모이는 곳.</td></tr>
+          <tr><td>4~12s</td><td>정수리 → 귀 뒤 라인 압점 마사지<div class="sn">리허설 순서: 관자→정수리→귀뒤→후두→목선</div></td><td>손가락 압 ASMR 리듬</td><td class="ost">말보다 손의 압으로<br>전해지는 회복.</td></tr>
+          <tr><td>12~20s</td><td>후두부에서 목선으로 연결</td><td>BGM 잔잔히 페이드인</td><td class="ost">청주, 신봉동의<br>1:1 케어.</td></tr>
+          <tr><td>20~25s</td><td>손을 천천히 떼며 정리되는 모발<div class="sn">DM CTA 자막 크게</div></td><td>마무리 페이드아웃</td><td class="ost">조용한 휴식이 필요하다면<br>DM으로 문의 주세요.</td></tr>
+        </table>
+        <div class="checklist">
+          <div class="cl-title">촬영 체크리스트</div>
+          <div class="ci">압점 순서 사전 리허설 (관자→정수리→귀뒤→후두→목선)</div>
+          <div class="ci">손가락 움직임 — 천천히, 의도적으로</div>
+          <div class="ci">사이드 45도 + 클로즈업 2앵글</div>
+          <div class="ci star">핸즈모션 별도 컷 추가 확보 (편집 자유도)</div>
+          <div class="ci star">#3 거품 마사지 컷 인서트로 재활용 가능</div>
+        </div>
+      </div>
+
+      <div class="cue-card" style="grid-column:1/-1;">
+        <div class="cue-card-header">
+          <div class="cue-num">#5</div>
+          <div><div class="cue-title">색보다 먼저 보이는 것 — 드라이 윤기 마무리</div><div class="cue-meta"><span class="cue-dur">22s / 역광 슬로우</span><span class="cb cb-m">메인 카메라 역광</span><span class="cb">망원 매크로</span></div></div>
+        </div>
+        <table class="cue-table">
+          <tr><th>TIME</th><th>SHOT</th><th>AUDIO</th><th>ON-SCREEN</th></tr>
+          <tr><td>0~3s</td><td>드라이 바람에 모발 움직이는 역광 슬로우<div class="sn">창문 앞 or 역광 조명 / 120fps 필수</div></td><td>드라이어 로우톤 화이트노이즈</td><td class="ost">색보다 먼저 보이는 건,<br>윤기입니다.</td></tr>
+          <tr><td>3~10s</td><td>롤브러시가 끝단을 정리하는 손목 무빙<div class="sn">빛 반사 각도 탐색</div></td><td>브러시 + 바람음 레이어</td><td class="ost">좋은 염색은<br>색만 남기지 않습니다.</td></tr>
+          <tr><td>10~17s</td><td>빛이 모발 표면에 반사되는 컷 매크로<div class="sn">망원 매크로 효과</div></td><td>BGM 페이드인</td><td class="ost">빛과 결을 함께 남깁니다.</td></tr>
+          <tr><td>17~22s</td><td>완성된 뒷모습 정지 컷<div class="sn">마지막 1초 길게 — 썸네일 추출용</div></td><td>메인테마</td><td class="ost">염색 전 비교용으로<br>저장해 두세요 🤍</td></tr>
+        </table>
+        <div class="checklist">
+          <div class="cl-title">촬영 체크리스트</div>
+          <div class="ci">역광 필수 — 창문 앞 or 역광 조명 (모발 결 입자 보이게)</div>
+          <div class="ci">120fps 슬로우모션 / 빛 반사 각도 탐색</div>
+          <div class="ci">정지 컷 마지막 1초 길게 (썸네일 추출용)</div>
+          <div class="ci star">이 컷 → #1 애프터 결과물로 재활용</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 04 SCHEDULE -->
+  <div class="section">
+    <div class="section-header"><span class="section-num">04</span><span class="section-title">촬영 당일 통합 스케줄</span></div>
+    <div class="schedule-items">
+      <div class="sr"><div class="st">00:00 – 00:25</div><div class="sd">25min</div><div class="sc"><div class="sb">SETUP</div><div class="sdesc">장비 세팅 · 조명 배치 · 삼각대 위치 마킹</div><div class="snote">마스킹 테이프로 삼각대 발 위치 고정 → 비포·애프터 앵글 일치 보장</div></div></div>
+      <div class="sr"><div class="st">00:25 – 00:45</div><div class="sd">20min</div><div class="sc"><div class="sb">BEFORE SHOT</div><div class="sdesc">비포 컷 촬영</div><div class="svids"><span class="vp">#1 비포</span><span class="vp">#5 비포 동시 확보</span></div><div class="snote">동일 고객 활용 / 자연광 각도 최고점 활용</div></div></div>
+      <div class="sr"><div class="st">00:45 – 01:15</div><div class="sd">30min</div><div class="sc"><div class="sb">HEAD SPA — MAIN</div><div class="sdesc">헤드스파 시술 본 촬영</div><div class="svids"><span class="vp">#3 거품 스케일링</span><span class="vp">#4 압점 마사지</span></div><div class="snote">시술 진행과 동시 촬영 / 메인 + 서브 카메라 동시 운용</div></div></div>
+      <div class="sr br"><div class="st" style="color:var(--text-muted)">01:15 – 01:25</div><div class="sd">10min</div><div class="sc"><div class="sb">TRANSITION</div><div class="sdesc">휴식 · 염색 세팅 · 소품 전환</div></div></div>
+      <div class="sr"><div class="st">01:25 – 01:50</div><div class="sd">25min</div><div class="sc"><div class="sb">COLOR MIXING</div><div class="sdesc">염색 믹싱 · 도포 촬영</div><div class="svids"><span class="vp">#2 믹싱 ASMR</span><span class="vp">#1 과정컷</span></div><div class="snote">탑다운 세팅 유지 / 링라이트 정면 / 마이크 15cm 근접</div></div></div>
+      <div class="sr wr"><div class="st">01:50 – 02:20</div><div class="sd">30min</div><div class="sc"><div class="sb">RESULT — BLOWDRY ⚠</div><div class="sdesc">염색 완성 후 드라이 촬영 — 시술 소요 시간에 따라 유동 조정</div><div class="svids"><span class="vp">#5 드라이 윤기</span><span class="vp">#1 애프터</span></div><div class="snote">역광 위치 잡기 / 삼각대 마킹 복귀 / 120fps</div></div></div>
+      <div class="sr br"><div class="st" style="color:var(--text-muted)">02:20 – 03:00+</div><div class="sd">40min+</div><div class="sc"><div class="sb">BUFFER / MAKEUP SHOTS</div><div class="sdesc">보완 컷 · 매크로 디테일 재촬영 · 시술 지연 흡수 버퍼</div><div class="snote">탄산수·우드 괄사 보유 시 선제 촬영 가능</div></div></div>
+    </div>
+    <div class="sched-warn">
+      <strong>⚠ 염색 시술 시간 주의</strong><br>
+      현재 스케줄은 염색 모델이 시술 중간 단계로 준비된 경우를 전제합니다. 처음부터 시술 진행 시 방치 시간(20~40분) + 샴푸 + 드라이 포함으로 <strong>3시간 초과 가능성 있음</strong>. 촬영 전 클라이언트와 시술 단계 사전 협의 필수.
+    </div>
+  </div>
+
+  <!-- 05 B-ROLL -->
+  <div class="section">
+    <div class="section-header"><span class="section-num">05</span><span class="section-title">B-roll 재활용 맵</span></div>
+    <div class="broll-map">
+      <div class="bi"><div class="bf">#2 컬러 믹싱 컷</div><span class="ba2">↓</span><div class="bt">#1 과정 하이라이트<br>(8~15s 구간) 재활용</div><span class="bsave">컷 절감 2개</span></div>
+      <div class="bi"><div class="bf">#3 거품 스케일링</div><span class="ba2">↓</span><div class="bt">#4 마사지 중간<br>인서트 재활용</div><span class="bsave">컷 절감 2개</span></div>
+      <div class="bi"><div class="bf">#5 드라이 윤기</div><span class="ba2">↓</span><div class="bt">#1 애프터 결과물<br>(15~22s 구간) 재활용</div><span class="bsave">컷 절감 2개</span></div>
+      <div class="bi"><div class="bf">#4 압점 핸즈모션</div><span class="ba2">↓</span><div class="bt">#3 거품 마사지<br>컷 인서트 활용</div><span class="bsave">컷 절감 1개</span></div>
+    </div>
+    <div class="note-block">5편 영상 총 28~30개 컷 / 실제 <strong>신규 촬영 컷: 18~20개</strong> / 나머지는 편집 재조합으로 완성.</div>
+  </div>
+
+  <!-- 06 COLOR GRADE -->
+  <div class="section">
+    <div class="section-header"><span class="section-num">06</span><span class="section-title">컬러 그레이딩 방향 (편집 가이드)</span></div>
+    <div class="grade-grid">
+      <div class="gc"><div class="gsw" style="background:linear-gradient(135deg,#3a2c1e 0%,#6b4a2e 50%,#c8a06e 100%);"></div><div class="gv">전체 베이스</div><div class="gn">웜 세피아 베이스</div><div class="gd">섀도우 쿨 브라운 → 하이라이트 웜 크림. 스킨톤 보정 최우선.</div></div>
+      <div class="gc"><div class="gsw" style="background:linear-gradient(135deg,#1a1a2a 0%,#3d2a1a 50%,#d4a574 100%);"></div><div class="gv">#1 비포·애프터</div><div class="gn">비포: 쿨 / 애프터: 웜</div><div class="gd">비포 쿨 언더톤 보정. 애프터 웜 톤으로 대비 극대화.</div></div>
+      <div class="gc"><div class="gsw" style="background:linear-gradient(135deg,#0d0a06 0%,#2a2015 50%,#8b6b3a 100%);"></div><div class="gv">#2 믹싱 ASMR</div><div class="gn">딥 다크 + 크림 하이라이트</div><div class="gd">배경 최대한 어둡게. 크림 텍스처 광택 살리기.</div></div>
+      <div class="gc"><div class="gsw" style="background:linear-gradient(135deg,#0a1a12 0%,#1a3a2a 50%,#a0c8b0 100%);"></div><div class="gv">#3 #4 헤드스파</div><div class="gn">쿨 클린 + 스킨 웜</div><div class="gd">거품·두피 청결감 강조. 손 피부톤 자연스럽게.</div></div>
+      <div class="gc"><div class="gsw" style="background:linear-gradient(135deg,#1a1008 0%,#4a3018 50%,#f0d080 100%);"></div><div class="gv">#5 드라이 역광</div><div class="gn">역광 골드 할레이션</div><div class="gd">하이라이트 오버노출 허용. 모발 결 광택 극대화.</div></div>
+    </div>
+  </div>
+
+  <!-- 07 COPY REVISION -->
+  <div class="section">
+    <div class="section-header"><span class="section-num">07</span><span class="section-title">카피 수정 내역</span></div>
+    <div class="dt">
+      <table class="copy-table">
+        <tr><th>구분</th><th>기존 문구</th><th>수정 문구</th><th>수정 이유</th></tr>
+        <tr><td style="color:var(--text-dim);font-size:11px;white-space:nowrap;">#1 훅</td><td class="old">피곤해 보이는 이유, 피부가 아닐 수 있습니다</td><td class="new">피곤해 보이는 인상, 가르마에서 시작될 수 있습니다</td><td class="reason">구체성 강화 / 시술 연결 명확</td></tr>
+        <tr><td style="color:var(--text-dim);font-size:11px;white-space:nowrap;">#2 제목·자막</td><td class="old">오늘의 컬러가 만들어지는 소리</td><td class="new">컬러가 완성되기 전, 가장 조용한 순간</td><td class="reason">톤앤매너 일치 / 침묵 케어 강조</td></tr>
+        <tr><td style="color:var(--text-dim);font-size:11px;white-space:nowrap;">#3 첫자막</td><td class="old">두피가 씻기는 장면</td><td class="new">두피가 비워지는 장면</td><td class="reason">고급감 / 영상 제목과 통일</td></tr>
+        <tr><td style="color:var(--text-dim);font-size:11px;white-space:nowrap;">#4 CTA</td><td class="old">조용한 휴식이 필요한 사람에게 DM으로 보내주세요</td><td class="new">조용한 휴식이 필요하다면 DM으로 문의 주세요</td><td class="reason">자연스러운 어투 / 직접 CTA</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 08 EQUIPMENT -->
+  <div class="section">
+    <div class="section-header"><span class="section-num">08</span><span class="section-title">장비 & 소품 리스트</span></div>
+    <div class="equip-grid">
+      <div class="equip-section">
+        <div class="equip-header"><span>ARTren 측 준비물</span><span class="equip-who">내부 지참용</span></div>
+        <div class="equip-list">
+          <div class="equip-item"><span class="en">메인 카메라</span><span class="er">#1 #2 #5 메인<br>85mm / 24~70mm</span></div>
+          <div class="equip-item"><span class="en">서브 카메라</span><span class="er">#3 #4 탑샷 동시촬영<br>와이드 / 고정앵글</span></div>
+          <div class="equip-item"><span class="en">망원·매크로 렌즈</span><span class="er">모발 결 클로즈업<br>#5 광택 매크로</span></div>
+          <div class="equip-item"><span class="en">짐벌 / 포켓 캠</span><span class="er">탑다운 고정 보조<br>#2 믹싱 서브</span></div>
+          <div class="equip-item"><span class="en">무선 마이크 (메인)</span><span class="er">ASMR 근접 메인<br>믹싱·거품·압점</span></div>
+          <div class="equip-item"><span class="en">무선 마이크 ×2 (서브)</span><span class="er">다점 사운드 확보<br>두피 / 믹싱볼 동시</span></div>
+          <div class="equip-item"><span class="en">탑다운 가능 삼각대</span><span class="er">#2 믹싱 전용</span></div>
+          <div class="equip-item"><span class="en">링라이트 + 반사판</span><span class="er">크림 광택 극대화</span></div>
+          <div class="equip-item"><span class="en">마스킹 테이프 + 줄자</span><span class="er">앵글 매칭 위치 마킹</span></div>
+        </div>
+      </div>
+      <div class="equip-section">
+        <div class="equip-header"><span>모람헤어 측 준비물</span><span class="equip-who">클라이언트 지참</span></div>
+        <div class="equip-list">
+          <div class="equip-item"><span class="en">새 유리볼 + 브러시 (믹싱용)</span><span class="er">사용 흔적 없는 새것<br>#2 메인 소품</span></div>
+          <div class="equip-item"><span class="en">깨끗한 흰 타월 3장</span><span class="er">헤드스파 배경 소품</span></div>
+          <div class="equip-item"><span class="en">흰 대리석 보드 or 블랙 트레이</span><span class="er">믹싱 배경용 (택 1)</span></div>
+          <div class="equip-item"><span class="en">알루미늄 호일</span><span class="er">인서트 컷용</span></div>
+          <div class="equip-item"><span class="en">염색약 1.5배 분량</span><span class="er">재촬영 분량 포함</span></div>
+          <div class="equip-item"><span class="en">스케일링 거품 (2회 분량)</span><span class="er">재촬영 버퍼 포함</span></div>
+          <div class="equip-item"><span class="en">살롱 내 다른 예약 미배정</span><span class="er">ASMR 사운드 환경 확보</span></div>
+          <div class="equip-item"><span class="en">새치 모델 + 동의서</span><span class="er">시술 동의 + 영상 사용 동의<br>촬영일 전 수령</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 PRE-CHECKS -->
+  <div class="section">
+    <div class="section-header"><span class="section-num">09</span><span class="section-title">사전 확인 필수 사항</span></div>
+    <div class="precheck-grid">
+      <div class="pi"><div class="pn">①</div><div class="pt">촬영 가능 고객 1명 확보<br>(실제 시술 진행)</div><div class="pimp">모든 영상의 자연스러움 결정. 미확보 시 촬영 전면 불가.</div><span class="pcrit ch">CRITICAL</span></div>
+      <div class="pi"><div class="pn">②</div><div class="pt">염색 → 드라이까지<br>실제 소요 시간 확인</div><div class="pimp">3시간 초과 가능성 있음. 시술 단계 사전 협의 필수.</div><span class="pcrit ch">CRITICAL</span></div>
+      <div class="pi"><div class="pn">③</div><div class="pt">자연광 가능 시간대<br>10~14시 권장</div><div class="pimp">#1 #5 역광 컷 품질 직결. 외 시간대 시 보조 조명 플랜B.</div><span class="pcrit ch">HIGH</span></div>
+      <div class="pi"><div class="pn">④</div><div class="pt">디자이너 손동작<br>사전 리허설</div><div class="pimp">#4 압점 순서 어색 = 고급감 즉시 붕괴. 1회 리허설 필수.</div><span class="pcrit ch">HIGH</span></div>
+      <div class="pi"><div class="pn">⑤</div><div class="pt">시술 라인업 확인<br>(탄산수·우드 괄사)</div><div class="pimp">보유 시 버퍼 40분 활용 → 후속 콘텐츠 자동 확보.</div><span class="pcrit co">OPTIONAL</span></div>
+    </div>
+  </div>
+
+  <!-- 10 DELIVERABLES -->
+  <div class="section">
+    <div class="section-header"><span class="section-num">10</span><span class="section-title">산출물 & 납품 일정</span></div>
+    <div class="delivery-grid">
+      <div class="dt">
+        <table>
+          <tr><th>항목</th><th>내용</th></tr>
+          <tr><td>납품 영상</td><td>인스타그램 릴스 5편 (각 18~30초)</td></tr>
+          <tr><td>영상 비율</td><td>9:16 세로형</td></tr>
+          <tr><td>해상도</td><td>1080 × 1920 (Full HD)</td></tr>
+          <tr><td>영상별 캡션</td><td>기본 1세트 제공</td></tr>
+          <tr><td>해시태그</td><td>기본 1세트 제공</td></tr>
+          <tr><td>썸네일 이미지</td><td>릴스 커버 1컷 제안 <span class="opt">OPTIONAL</span></td></tr>
+          <tr><td>업로드 대행</td><td>별도 협의 <span class="opt">미포함</span></td></tr>
+          <tr><td>1차 시안 납품</td><td>촬영일로부터 7영업일 이내</td></tr>
+          <tr><td>수정 횟수</td><td>1차 통합 수정 1회 + 최종 수정 1회</td></tr>
+          <tr><td>최종 납품</td><td>시안 컨펌 후 3영업일 이내</td></tr>
+        </table>
+      </div>
+      <div class="dt">
+        <table>
+          <tr><th>편집 소프트웨어</th><th>용도</th></tr>
+          <tr><td>DaVinci Resolve</td><td>컬러 그레이딩 메인</td></tr>
+          <tr><td>Final Cut Pro</td><td>타임라인 편집 · 컷편집</td></tr>
+          <tr><td>After Effects</td><td>자막 모션 · CTA 애니메이션</td></tr>
+          <tr><td>Motion 5</td><td>타이포 모션 보조</td></tr>
+          <tr><td>Capture One</td><td>썸네일 보정</td></tr>
+          <tr><td>Canva</td><td>썸네일 카피 피팅</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="note-block"><strong>수정 횟수 조정 이유</strong> — 영상별 2회 × 5편 = 최대 10회. 과부하 방지를 위해 <strong>1차 통합 수정 1회(전 영상 동시)</strong> + <strong>최종 수정 1회</strong>로 전환. 클라이언트 사전 안내 필요.</div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-brand">ARTren Creative Studio</div>
+  <div class="footer-info">모람헤어 웰니스 / 충북 청주시 신봉동<br>2026.06 촬영 구성안 v2 — 클라이언트 전달용</div>
+</div>
+
+</body>
+</html>
